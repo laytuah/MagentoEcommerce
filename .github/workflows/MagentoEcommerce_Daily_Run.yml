@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Test-Results
-          path: 
+          path: C:\Users\Abdlateef\source\repos\MagentoEcommerce\MagentoEcommerce\bin\Debug\net8.0
