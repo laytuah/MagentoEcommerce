@@ -20,7 +20,8 @@ namespace MagentoEcommerce.PageObject
         public void LoadAUT()
         {
             Driver.Navigate().GoToUrl(ConfigurationManager.Url);
-            Button_button("agree").Click();
+            if (Button_button("agree").ElementExists() && Button_button("agree").IsDisplayed())
+                Button_button("agree").Click();
         }
     }
 }
