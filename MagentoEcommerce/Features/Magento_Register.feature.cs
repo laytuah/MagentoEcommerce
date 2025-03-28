@@ -175,7 +175,7 @@ await this.FeatureBackgroundAsync();
  await testRunner.WhenAsync("the user navigates to \'Men\' \'Tops\' page", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 16
- await testRunner.WhenAsync("the user completes purchase of a random item", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.AndAsync("complete purchase of multiple items", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 17
  await testRunner.ThenAsync("the user should get order complete messages", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

@@ -9,7 +9,7 @@ namespace MagentoEcommerce.PageObject
         protected PageElement Product_Size(string productSize) => new PageElement(Driver, By.XPath($"//div[contains(@aria-labelledby,'option-label-size')]//div[text()='{productSize}']"));
         protected PageElement Product_Colour(string productColour) => new PageElement(Driver, By.XPath($"//div[contains(@aria-labelledby,'option-label-color')]//div[@aria-label='{productColour}']"));
         protected PageElement Product_Quantity => new PageElement(Driver, By.XPath("//input[@id='qty']"));
-        protected PageElement numberOfProductsInCart => new PageElement(Driver, By.XPath("//div[@class='minicart-wrapper']//span[@class='counter-number']"));
+        
         
 
         public void AddItemToCartFromPDP()

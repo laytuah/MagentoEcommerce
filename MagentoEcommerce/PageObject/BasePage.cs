@@ -17,6 +17,8 @@ namespace MagentoEcommerce.PageObject
 
         protected PageElement Textbox(string textboxName, int index = 1) => new PageElement(Driver, By.XPath($"(//label[contains(normalize-space(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')), '{textboxName}')]/following::input)[{index}]"));
 
+        protected PageElement numberOfProductsInCart => new PageElement(Driver, By.XPath("//div[@class='minicart-wrapper']//span[@class='counter-number']"));
+
         public void LoadAUT()
         {
             Driver.Navigate().GoToUrl(ConfigurationManager.Url);
