@@ -12,7 +12,7 @@ namespace MagentoEcommerce.PageObject
         protected PageElement numberOfProductsInCart => new PageElement(Driver, By.XPath("//div[@class='minicart-wrapper']//span[@class='counter-number']"));
         
 
-        public void AddItemToCart()
+        public void AddItemToCartFromPDP()
         {
             var selectedProduct = Product.SelectedProductInformation();
             if (Product_Size(selectedProduct.Size).IsDisplayed())

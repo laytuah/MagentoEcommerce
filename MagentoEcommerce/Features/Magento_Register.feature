@@ -10,3 +10,8 @@ Scenario: User is able to register a new account
 Scenario: User is able to place an order
 	When the user completes purchase of a random item
 	Then the user should get order complete messages
+
+Scenario: User is able place an order via the nav bar
+	When the user navigates to 'Men' 'Tops' page
+	When the user completes purchase of a random item
+	Then the user should get order complete messages

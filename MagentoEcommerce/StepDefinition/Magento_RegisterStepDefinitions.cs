@@ -14,6 +14,7 @@ namespace MagentoEcommerce.StepDefinition
         readonly CheckoutPage _checkoutPage;
         readonly RegisterPage _registerPage;
         readonly ScenarioContext _scenarioContext;
+        readonly ProductListPage _productListPage;
 
         public Magento_RegisterStepDefinitions(ScenarioContext scenarioContext)
         {
@@ -22,6 +23,7 @@ namespace MagentoEcommerce.StepDefinition
             _productDetailsPage = scenarioContext.ScenarioContainer.Resolve<ProductDetailsPage>();
             _checkoutPage = scenarioContext.ScenarioContainer.Resolve<CheckoutPage>();
             _registerPage = scenarioContext.ScenarioContainer.Resolve<RegisterPage>();
+            _productListPage = scenarioContext.ScenarioContainer.Resolve<ProductListPage>();
             _scenarioContext = scenarioContext.ScenarioContainer.Resolve<ScenarioContext>();
         }
 
@@ -52,8 +54,8 @@ namespace MagentoEcommerce.StepDefinition
         public void WhenTheUserCompletesPurchaseOfARandomItem()
         {
             var customer = _scenarioContext.Get<CustomerProfile>("customer");
-            _homePage.SelectedRandomProduct();
-            _productDetailsPage.AddItemToCart();
+            _homePage.SelectRandomProductOnHomepage();
+            _productDetailsPage.AddItemToCartFromPDP();
             _checkoutPage.EnterDeliveryDetails(customer);
         }
 
@@ -63,5 +65,13 @@ namespace MagentoEcommerce.StepDefinition
             _checkoutPage.GetOrderComfirmationMessages().appreciationMessage.Should().Contain("thank you for your purchase");
             _checkoutPage.GetOrderComfirmationMessages().orderNumber.Should().Contain("your order # is");
         }
+
+        [StepDefinition("the user navigates to {string} {string} page")]
+        public void WhenTheUserNavigatesToPage(string mainMenu, string subMenu)
+        {
+            _homePage.NavigateToPage(mainMenu, subMenu);
+            _productListPage.AddItemToCartFromPLP();
+        }
+
     }
 }
