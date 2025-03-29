@@ -72,10 +72,10 @@ namespace MagentoEcommerce.StepDefinition
             _homePage.NavigateToPage(mainMenu, subMenu);
         }
 
-        [StepDefinition("complete purchase of multiple items")]
-        public void WhenCompletePurchaseOfMultipleItems()
+        [StepDefinition("complete purchase of {int} items")]
+        public void WhenCompletePurchaseOfItems(int itemQuantity)
         {
-            _productListPage.AddItemToCartFromPLP();
+            _productListPage.AddItemToCartFromPLP(itemQuantity);
         }
 
     }

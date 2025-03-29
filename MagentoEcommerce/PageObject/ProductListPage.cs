@@ -1,4 +1,5 @@
-﻿using MagentoEcommerce.Data;
+﻿using FluentAssertions;
+using MagentoEcommerce.Data;
 using OpenQA.Selenium;
 
 
@@ -13,18 +14,17 @@ namespace MagentoEcommerce.PageObject
         
 
 
-        public void AddItemToCartFromPLP()
+        public void AddItemToCartFromPLP(int itemQuantity)
         {
 
             var selectedProduct = Product.SelectedProductInformation();
-            for (int i = 1; i <= 2; i++)
+            for (int i = 1; i <= itemQuantity; i++)
             {
-                if (Product_Size(i, selectedProduct.Size).ElementExists() && Product_Size(i, selectedProduct.Size).IsDisplayed())
-                    Product_Size(i, selectedProduct.Size).Click();
-                if (Product_Colour(i).ElementExists() && Product_Colour(i).IsDisplayed())
-                    Product_Colour(i).Click();
+                Product_Size(i, selectedProduct.Size).Click();
+                Product_Colour(i).Click();
                 if (Button_button("add to cart", i).IsDisplayed())
                     Button_button("add to cart", i).Click();
+                int.Parse(numberOfProductsInCart.Text.Trim()).Should().Be(i);
             }
 
             numberOfProductsInCart.Click();
