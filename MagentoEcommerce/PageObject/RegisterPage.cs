@@ -7,8 +7,6 @@ namespace MagentoEcommerce.PageObject
     {
         public RegisterPage(IWebDriver driver) : base(driver) { }
 
-        protected PageElement Textbox(string textboxName, int index = 1) => new PageElement(Driver, By.XPath($"(//label[contains(normalize-space(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')), '{textboxName}')]/following::input)[{index}]"));
-
         protected PageElement RegisterationConfirmation_label => new PageElement(Driver, By.XPath("//h1[@class='page-title']"));
 
         protected PageElement RegisterationConfirmationInformation_label => new PageElement(Driver, By.XPath("//div[@class='box box-information']//p"));

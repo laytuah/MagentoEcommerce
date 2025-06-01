@@ -6,7 +6,7 @@ namespace MagentoEcommerce.Data
     {
         public static ProductInformation SelectedProductInformation()
         {
-            return new ProductInformation {Size = "XL", Colour = "Blue", Quantity = "1"};
+            return new ProductInformation ("XL", "Blue", 1);
         }
     }
 }
