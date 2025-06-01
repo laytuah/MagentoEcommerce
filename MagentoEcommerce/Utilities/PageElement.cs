@@ -76,14 +76,15 @@ public class PageElement
     {
         try
         {
-            if (IsElementInteractable(GetElement()))
+            var element = GetElement();
+            if (IsElementInteractable(element))
             {
-                GetElement().Click();
+                element.Click();
             }
             else
             {
                 WaitForClickability();
-                GetElement().Click();
+                element.Click();
             }
         }
         catch (ElementClickInterceptedException)
