@@ -13,5 +13,5 @@ Scenario: User is able to place an order
 
 #Scenario: User is able place an order via the nav bar
 #	When the user navigates to 'Men' 'Tops' page
-#	And complete purchase of 5 items
+#	And complete purchase of 3 items
 #	Then the user should get order complete messages

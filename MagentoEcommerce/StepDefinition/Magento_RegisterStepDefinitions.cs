@@ -75,7 +75,9 @@ namespace MagentoEcommerce.StepDefinition
         [StepDefinition("complete purchase of {int} items")]
         public void WhenCompletePurchaseOfItems(int itemQuantity)
         {
+            var customer = _scenarioContext.Get<CustomerProfile>("customer");
             _productListPage.AddItemToCartFromPLP(itemQuantity);
+            _checkoutPage.EnterDeliveryDetails(customer);
         }
 
     }
