@@ -27,15 +27,26 @@ public class PageElement
             try
             {
                 var element = _driver.FindElement(_locator);
-                if (element.Displayed || element.Enabled)
-                    return element;
+
+                try
+                {
+                    if (element.Displayed || element.Enabled)
+                        return element;
+                }
+                catch (ElementNotInteractableException)
+                {
+                    // Not interactable yet — skip to retry
+                }
             }
             catch (StaleElementReferenceException) { }
             catch (NoSuchElementException) { }
+
             Thread.Sleep(500);
         }
+
         throw new NoSuchElementException($"Element '{_locator}' not found or not stable after retries.");
     }
+
 
     private bool IsElementInteractable(IWebElement element) => element != null && element.Displayed && element.Enabled;
     public string TagName => GetElement().TagName;
@@ -74,9 +85,9 @@ public class PageElement
 
     public void Click()
     {
+        var element = GetElement();
         try
         {
-            var element = GetElement();
             if (IsElementInteractable(element))
             {
                 element.Click();
@@ -90,6 +101,7 @@ public class PageElement
         catch (ElementClickInterceptedException)
         {
             WaitForLoadingIconToDisappear();
+            WaitForClickability();
             GetElement().Click();
         }
         catch (ElementNotInteractableException)
