@@ -85,17 +85,17 @@ public class PageElement
 
     public void Click()
     {
-        var element = GetElement();
+        ScrollIntoView();
         try
         {
-            if (IsElementInteractable(element))
+            if (IsElementInteractable(GetElement()))
             {
-                element.Click();
+                GetElement().Click();
             }
             else
             {
                 WaitForClickability();
-                element.Click();
+                GetElement().Click();
             }
         }
         catch (ElementClickInterceptedException)
