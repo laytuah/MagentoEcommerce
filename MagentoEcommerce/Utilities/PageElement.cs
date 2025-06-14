@@ -100,9 +100,16 @@ public class PageElement
         }
         catch (ElementClickInterceptedException)
         {
-            WaitForLoadingIconToDisappear();
-            WaitForClickability();
-            GetElement().Click();
+            try
+            {
+                WaitForLoadingIconToDisappear();
+                WaitForClickability();
+                GetElement().Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                JSClick();
+            }
         }
         catch (ElementNotInteractableException)
         {
