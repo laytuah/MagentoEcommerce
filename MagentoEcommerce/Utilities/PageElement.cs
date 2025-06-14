@@ -85,7 +85,6 @@ public class PageElement
 
     public void Click()
     {
-        ScrollIntoView();
         try
         {
             if (IsElementInteractable(GetElement()))
