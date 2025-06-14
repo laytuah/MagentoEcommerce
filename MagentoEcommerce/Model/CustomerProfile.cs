@@ -12,6 +12,6 @@ namespace MagentoEcommerce.Model
         public string Province { get; set; } = "Alaska";
         public string PostalCode { get; set; } = DataGenerator.GenerateRandomIntegerString(5) + "-" + DataGenerator.GenerateRandomIntegerString(4);
         public string PhoneNumber { get; set; } = "+1" + DataGenerator.GenerateRandomIntegerString();
-        public string Password { get; set; } = DataGenerator.GenerateRandomAlphanumerics(25);
+        public string Password { get; set; } = DataGenerator.GenerateValidPassword(20);
     }
 }
